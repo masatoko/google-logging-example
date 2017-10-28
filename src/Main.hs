@@ -69,6 +69,7 @@ logMsg logId msg = do
 
   let
     entry = logEntry & leTextPayload ?~ msg
+                     & leSeverity ?~ Info -- Network.Google.Logging - LogEntrySeverity
     entries = [entry]
     logName = "projects/" <> projectId <> "/logs/" <> logId
     resourceLabels = monitoredResourceLabels $ HM.fromList
